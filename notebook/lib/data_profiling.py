@@ -1,10 +1,14 @@
+from IPython.display import display
 from ydata_profiling import ProfileReport
 import os
 import webbrowser
 
 # -------------------------
 
-def profile_data(df, file_name='data_profiling', report_title='YData Profiling Report'):
+def profile_data(df,
+                 file_name='data_profiling',
+                 report_title='YData Profiling Report',
+                 show=False):
     """
     Profiles the given DataFrame and generates an HTML report.
 
@@ -12,6 +16,7 @@ def profile_data(df, file_name='data_profiling', report_title='YData Profiling R
         - df (pd.DataFrame): The DataFrame to profile.
         - file_name (str): The name of the output HTML file (without extension). Default is 'data_profiling'.
         - report_title (str): The title of the report. Default is 'YData Profiling Report'.
+        - show (bool): Whether to display the report in the notebook. Default is False.
     """
 
     # Ensuring the output directory exists
@@ -23,6 +28,10 @@ def profile_data(df, file_name='data_profiling', report_title='YData Profiling R
     OUT_FILE = os.path.join(WORK_DIR, f"{file_name}.html")
     profile = ProfileReport(df, explorative=True, title=report_title)
     profile.to_file(OUT_FILE)
+
+    # Display in the notebook if required
+    if show:
+        display(profile)
 
     # -------------------------
 

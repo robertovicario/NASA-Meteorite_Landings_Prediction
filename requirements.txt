@@ -1,6 +1,7 @@
 ipykernel
 ipywidgets
 jupyter
+kagglehub[pandas-datasets]
 matplotlib
 numpy
 pandas
