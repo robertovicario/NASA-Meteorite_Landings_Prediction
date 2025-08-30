@@ -6,6 +6,7 @@ import webbrowser
 # -------------------------
 
 def profile_data(df,
+                 path,
                  file_name='data_profiling',
                  report_title='YData Profiling Report',
                  show=False):
@@ -14,13 +15,14 @@ def profile_data(df,
 
     Parameters:
         - df (pd.DataFrame): The DataFrame to profile.
+        - path (str): The directory where the report will be saved.
         - file_name (str): The name of the output HTML file (without extension). Default is 'data_profiling'.
         - report_title (str): The title of the report. Default is 'YData Profiling Report'.
         - show (bool): Whether to display the report in the notebook. Default is False.
     """
 
     # Ensuring the output directory exists
-    WORK_DIR = os.path.abspath('../res/data-profiling')
+    WORK_DIR = os.path.abspath(path)
     if not os.path.exists(WORK_DIR):
         os.makedirs(WORK_DIR)
 
